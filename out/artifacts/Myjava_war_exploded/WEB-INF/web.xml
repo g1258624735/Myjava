@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app id="starter" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<display-name>Struts 2 Rest Example</display-name>
+
+	<filter>
+		<filter-name>LoginFilter</filter-name>
+		<filter-class>com.myjava.hello.LoginFilter</filter-class>
+		<init-param>
+			<param-name>Site</param-name>
+			<param-value>菜鸟教程</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>LoginFilter</filter-name>
+		<url-pattern>/login.do</url-pattern>
+	</filter-mapping>
+
+
+	<!-- Welcome file lists -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<servlet-name>Login</servlet-name>
+		<servlet-class>com.myjava.hello.LoginServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/login.do</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>JDBCHttp</servlet-name>
+		<servlet-class>com.myjava.hello.JDBCServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>JDBCHttp</servlet-name>
+		<url-pattern>/jdbc.do</url-pattern>
+	</servlet-mapping>
+<!-- servlet mappings 错误处理 servlet -->
+	<!-- <servlet>
+		<servlet-name>ErrorHandler</servlet-name>
+		<servlet-class>com.myjava.hello.ErrorHandlerServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ErrorHandler</servlet-name>
+		<url-pattern>/error.do</url-pattern>
+	</servlet-mapping>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/ErrorHandlerServlet</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/ErrorHandlerServlet</location>
+	</error-page> -->
+	 <!--struts2 的过滤配置-->
+	<!--<filter>-->
+  	<!--<filter-name>struts2</filter-name>-->
+  	<!--&lt;!&ndash;<filter-class>&ndash;&gt;-->
+  		<!--&lt;!&ndash;&lt;!&ndash;org.apache.struts2.dispatcher.DefaultActionSupport&ndash;&gt;&ndash;&gt;-->
+  	<!--&lt;!&ndash;</filter-class>&ndash;&gt;-->
+  	<!--</filter>-->
+  	<!--<filter-mapping>-->
+  	<!--<filter-name>struts2</filter-name>-->
+  	<!--<url-pattern>*.action</url-pattern>-->
+ 	 <!--</filter-mapping>-->
+	<!-- Restricts access to pure JSP files - access available only via Struts 
+		action 过滤jsp 直接访问 可以杜绝部分安全问题 -->
+	<!-- <security-constraint> <display-name>No direct JSP access</display-name> 
+		<web-resource-collection> <web-resource-name>No-JSP</web-resource-name> <url-pattern>*.jsp</url-pattern> 
+		</web-resource-collection> <auth-constraint> <role-name>no-users</role-name> 
+		</auth-constraint> </security-constraint> <security-role> <description>Don't 
+		assign users to this role</description> <role-name>no-users</role-name> </security-role> -->
+
+</web-app>
